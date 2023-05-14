@@ -8,27 +8,20 @@ jobs:
     runs-on: ubuntu-20.04
 
     steps:
+    - uses: actions/checkout@v3
+      
     - name: 准备工作
       run: |
-        sudo mkdir -p /workdir
-        sudo chown $USER:$GROUPS /workdir
+        echo $PWD
 #        sudo apt -qq update
 #        sudo apt -qq upgrade -y
         
-    - name: 克隆仓库
-      working-directory: /workdir
-      run: |
-        git clone https://github.com/pys078/github-actions-playground.git playground
-        ln -sf /workdir/playground $GITHUB_WORKSPACE/playground
-        
     - name: 创建一个文件
       run: |
-        cd playground
         echo "Hello World\!">test.txt
       
     - name: commit
       run: |
-        cd playground
         git config --local user.email "action@github.com"
         git config --local user.name "github-actions"
         git add --all
