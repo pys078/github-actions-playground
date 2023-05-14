@@ -1,0 +1,35 @@
+name: auto-git-push
+
+on:
+  workflow_dispatch:
+
+jobs:
+  auto-git-push:
+    runs-on: ubuntu-20.04
+
+    steps:
+    - name: 更新软件包
+      run: |
+        sudo apt -qq update
+        sudo apt -qq upgrade -y
+        
+    - name: 克隆仓库
+      run: git clone https://github.com/pys078/github-actions-playground.git
+        
+    - name: 创建一个文件
+      run: |
+        cd github-actions-playground
+        echo "Hello World\!">test.txt
+      
+    - name: commit
+      run: |
+        git config --local user.email "action@github.com"
+        git config --local user.name "github-actions"
+        git add .
+        git commit -m "Github Actions自动操作" -a
+        
+        
+    - name: push
+      uses: ad-m/github-push-action@master
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
