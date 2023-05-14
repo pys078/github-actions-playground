@@ -17,9 +17,7 @@ jobs:
       run: git clone https://github.com/pys078/github-actions-playground.git
         
     - name: 创建一个文件
-      run: |
-        cd github-actions-playground
-        echo "Hello World\!">test.txt
+      run: echo "Hello World\!">test.txt
       
     - name: commit
       run: |
