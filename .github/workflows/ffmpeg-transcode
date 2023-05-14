@@ -1,0 +1,35 @@
+name: ffmpeg-transcode
+
+on:
+  workflow_dispatch:
+
+jobs:
+  ffmpeg-transcode:
+    runs-on: ubuntu-20.04
+
+    steps:
+    - name: 更新下软件包
+      run: |
+        sudo apt -qq update
+        sudo apt -qq upgrade -y
+        sudo apt -qq install wget -y
+        sudo apt -qq install ffmpeg -y
+        
+    - name: 下载一下big buck bunny
+      run: ｜
+        pwd
+        wget https://download.blender.org/peach/bigbuckbunny_movies/big_buck_bunny_1080p_h264.mov
+        
+    - name: h264转h265
+      run: ffmpeg -i "big_buck_bunny_1080p_h264.mov" -c:v libx265 -preset medium output.mp4
+      
+    - name: 整理文件
+      run: |
+        rm -rf big_buck_bunny_1080p_h264.mov
+        echo "FIRMWARE=$PWD" >> $GITHUB_ENV
+      
+    - name: 呈递文件
+      uses: actions/upload-artifact@main
+      with:
+        name: h265编码的big buck bunny
+        path: ${{ env.FIRMWARE }}
