@@ -1,0 +1,25 @@
+name: show-power
+
+on: [push]
+
+jobs:
+  build:
+    runs-on: ubuntu-20.04
+
+    steps:
+    - name: 更新下软件包
+      run: |
+        sudo apt -qq update
+        sudo apt -qq upgrade -y
+        
+    - name: 输出内存总量
+      run: free -m
+        
+    - name: 输出硬盘总量
+      run: df
+      
+    - name: 输出CPU信息
+      run: cat /proc/cpuinfo
+      
+    - name: 输出GPU信息
+      run: lspci
