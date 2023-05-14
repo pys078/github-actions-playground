@@ -120,3 +120,24 @@ power management:
 
 看起来没有给GPU核心呢？可能是为了防止挖矿？
 
+## ffmpeg-transcode
+
+测试了一下转码和呈递文件，感觉使用github actions转码没啥优势啊
+
+**转码前**
+
+<img width="1072" alt="截屏2023-05-15 02 33 45" src="https://github.com/pys078/github-actions-playground/assets/7541452/34e0a3c4-3fee-4ef3-99ec-f39ca4de28f6">
+
+**转码后**
+
+<img width="1072" alt="截屏2023-05-15 02 31 27" src="https://github.com/pys078/github-actions-playground/assets/7541452/dfd4d9e3-3082-4b49-ba63-1df3e7f4b41d">
+
+**使用github action的转码速度**
+
+<img width="605" alt="截屏2023-05-15 02 37 26" src="https://github.com/pys078/github-actions-playground/assets/7541452/3e9bdf38-416d-4823-8a09-289a407ff8c8">
+
+**使用我的MacBook Air的转码速度**
+
+<img width="682" alt="截屏2023-05-15 02 36 22" src="https://github.com/pys078/github-actions-playground/assets/7541452/c6c4ba5f-3d62-4e45-af54-4e25e5be65db">
+
+比我这i5还要慢，看来github actions只能用作自动化转码服务器来用了
