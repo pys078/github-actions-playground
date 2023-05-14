@@ -23,13 +23,11 @@ jobs:
       
     - name: commit
       run: |
-        git config --local user.email "action@github.com"
-        git config --local user.name "github-actions"
-        git add .
-        git commit -m "Github Actions自动操作" -a
+        echo $PWD
+        git status
         
         
-    - name: push
-      uses: ad-m/github-push-action@master
-      with:
-        github_token: ${{ secrets.GITHUB_TOKEN }}
+#    - name: push
+#      uses: ad-m/github-push-action@master
+#      with:
+#        github_token: ${{ secrets.GITHUB_TOKEN }}
