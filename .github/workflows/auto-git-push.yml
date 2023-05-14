@@ -22,17 +22,19 @@ jobs:
         ln -sf /workdir/playground $GITHUB_WORKSPACE/playground
         
     - name: 创建一个文件
-      run: ｜
+      run: |
         cd playground
         echo "Hello World\!">test.txt
       
     - name: commit
       run: |
-        echo $PWD
-        git status
+        cd playground
+        git config --local user.email "action@github.com"
+        git config --local user.name "github-actions"
+        git add --all
+        git commit -m "Github Actions 自动操作" -a
         
-        
-#    - name: push
-#      uses: ad-m/github-push-action@master
-#      with:
-#        github_token: ${{ secrets.GITHUB_TOKEN }}
+    - name: push
+      uses: ad-m/github-push-action@master
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
