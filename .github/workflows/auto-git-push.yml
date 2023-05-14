@@ -11,6 +11,7 @@ jobs:
     - name: 准备工作
       run: |
         sudo mkdir -p /workdir
+        sudo chown $USER:$GROUPS /workdir
 #        sudo apt -qq update
 #        sudo apt -qq upgrade -y
         
