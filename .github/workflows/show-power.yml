@@ -1,6 +1,7 @@
 name: show-power
 
-on: [push]
+on:
+  workflow_dispatch:
 
 jobs:
   show-power:
