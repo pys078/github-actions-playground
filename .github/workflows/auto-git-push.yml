@@ -8,8 +8,9 @@ jobs:
     runs-on: ubuntu-20.04
 
     steps:
-#    - name: 更新软件包
-#      run: |
+    - name: 准备工作
+      run: |
+        sudo mkdir -p /workdir
 #        sudo apt -qq update
 #        sudo apt -qq upgrade -y
         
