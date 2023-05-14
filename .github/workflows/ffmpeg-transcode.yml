@@ -16,14 +16,14 @@ jobs:
         sudo apt -qq install ffmpeg -y
         
     - name: 下载一下big buck bunny
-      run: wget https://download.blender.org/peach/bigbuckbunny_movies/big_buck_bunny_1080p_h264.mov
+      run: wget https://github.com/bower-media-samples/big-buck-bunny-1080p-30s/raw/master/video.mp4
         
     - name: h264转h265
-      run: ffmpeg -i "big_buck_bunny_1080p_h264.mov" -c:v libx265 -preset medium output.mp4
+      run: ffmpeg -i video.mp4 -c:v libx265 -preset medium output.mp4
       
     - name: 整理文件
       run: |
-        rm -rf big_buck_bunny_1080p_h264.mov
+        rm -rf video.mp4
         echo "FIRMWARE=$PWD" >> $GITHUB_ENV
       
     - name: 呈递文件
