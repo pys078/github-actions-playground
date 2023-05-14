@@ -8,16 +8,21 @@ jobs:
     runs-on: ubuntu-20.04
 
     steps:
-    - name: 更新软件包
-      run: |
-        sudo apt -qq update
-        sudo apt -qq upgrade -y
+#    - name: 更新软件包
+#      run: |
+#        sudo apt -qq update
+#        sudo apt -qq upgrade -y
         
     - name: 克隆仓库
-      run: git clone https://github.com/pys078/github-actions-playground.git
+      working-directory: /workdir
+      run: |
+        git clone https://github.com/pys078/github-actions-playground.git playground
+        ln -sf /workdir/playground $GITHUB_WORKSPACE/playground
         
     - name: 创建一个文件
-      run: echo "Hello World\!">test.txt
+      run: ｜
+        cd playground
+        echo "Hello World\!">test.txt
       
     - name: commit
       run: |
