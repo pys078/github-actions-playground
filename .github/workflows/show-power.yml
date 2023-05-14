@@ -3,7 +3,7 @@ name: show-power
 on: [push]
 
 jobs:
-  build:
+  show-power:
     runs-on: ubuntu-20.04
 
     steps:
